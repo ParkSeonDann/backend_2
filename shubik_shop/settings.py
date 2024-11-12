@@ -192,6 +192,8 @@ USE_TZ = True
 # Asegúrate de tener esto configurado
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Si tienes un directorio "static" para archivos estáticos
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')
+
 
 # Configura la URL para los archivos multimedia
 MEDIA_URL = '/media/'
