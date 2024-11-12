@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from os.path import join
+import os
+from os.path import join
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,6 +64,7 @@ INSTALLED_APPS = [
     'login',
     'notificacion',
     'pagos',
+    'sslserver',
 ]
 
 
@@ -189,16 +192,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# Asegúrate de tener esto configurado
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Configuración de los archivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]  # Si tienes un directorio "static" para archivos estáticos
-STATIC_ROOT = join(BASE_DIR, 'staticfiles')
+
+# STATICFILES_DIRS es para rutas de archivos estáticos en desarrollo.
+# Si tus archivos están en 'static', úsalo aquí.
+STATICFILES_DIRS = [
+    join(BASE_DIR, "static"),  # Carpeta que contiene tus archivos estáticos en desarrollo
+]
+
+# STATIC_ROOT solo se usa para producción. Define una carpeta diferente para evitar conflictos.
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')  # Carpeta donde `collectstatic` copiará los archivos
 
 
-# Configura la URL para los archivos multimedia
+# URL y directorio de archivos multimedia
 MEDIA_URL = '/media/'
-
-# Configura el directorio donde se almacenarán los archivos multimedia
 MEDIA_ROOT = join(BASE_DIR, 'media')
 
 # Default primary key field type

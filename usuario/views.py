@@ -1,4 +1,5 @@
 import logging
+from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -8,6 +9,9 @@ from .utils import upload_image_to_blob  # Importa la función para subir imáge
 
 # Configurar logging
 logger = logging.getLogger(__name__)
+
+def lobby(request):
+    return render(request, "lobby.html")
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()

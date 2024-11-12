@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from .views import lobby
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -23,7 +24,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('django.contrib.auth.urls')),
+    path('lobby/', lobby, name="lobby"),
+    path('django/', include('django.contrib.auth.urls')),
     path('api/compras/', include('compras.urls')),
     path('api/productos/', include('productos.urls')),
     path('api/usuarios/', include('usuario.urls')),

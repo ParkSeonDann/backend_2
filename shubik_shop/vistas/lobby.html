@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <script src="{% static 'service-worker.js' %}"></script>
+  </head>
+<body>
+  <h1>hola</h1>
+  <script>
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("{% static 'service-worker.js' %}")
+        .then(function (registration) {
+            console.log("Service Worker registrado con éxito:", registration.scope);
+        })
+        .catch(function (error) {
+            console.error("Registro de Service Worker fallido:", error);
+        });
+}
+  </script>
+</body>
+</html>
