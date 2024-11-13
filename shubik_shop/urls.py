@@ -24,7 +24,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lobby/', lobby, name="lobby"),
+    path('', lobby, name="lobby"),
     path('django/', include('django.contrib.auth.urls')),
     path('api/compras/', include('compras.urls')),
     path('api/productos/', include('productos.urls')),

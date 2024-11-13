@@ -1,10 +1,11 @@
 {
     "name": "Mi PWA",
     "short_name": "PWA",
-    "start_url": "/",
+    "start_url": "/lobby.html",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
+    "background_color": "#FFE9D2",
+    "theme_color": "#FFE1C4",
+    "orientation": "portrait-primary",
     "description": "Descripción de mi aplicación PWA",
     "icons": [
       {

@@ -1,22 +1,5 @@
-const CACHE_NAME = 'pwa-cache-v1';
-const urlsToCache = [
-  '/',
-  '/static/css/styles.css',
-  '/static/js/app.js',
-  '/static/icons/icon-192x192.png',
-  '/static/icons/icon-512x512.png'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
-});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/static/service-worker.js')
+    .then((reg) => console.log('Service Worker registrado con éxito:', reg))
+    .catch((err) => console.log('Error al registrar el Service Worker:', err));
+}
