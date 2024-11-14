@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Mi PWA</title>
-  <link rel="manifest" href="/staticfiles/manifest.json">
-  <script> src="/staticfiles/service-worker.js" </script>
+  <link rel="manifest" href="{% static 'manifest.json' %}">
 </head>
 <body>
   <div style="text-align: center; padding: 50px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 600px; margin: 0 auto;">
@@ -12,15 +11,13 @@
 
 <script>
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/staticfiles/service-worker.js')  // Asegúrate de que esta ruta sea correcta
-        .then((reg) => {
-          console.log('Service Worker registrado con éxito:', reg);
-        })
-        .catch((err) => {
-          console.log('Error al registrar el Service Worker:', err);
-        });
-    });
+    navigator.serviceWorker.register("{% static 'service-worker.js' %}")
+      .then(function(registration) {
+        console.log('Service Worker registrado con éxito:', registration);
+      })
+      .catch(function(error) {
+        console.log('Registro de Service Worker fallido:', error);
+      });
   }
 </script>
 </body>
